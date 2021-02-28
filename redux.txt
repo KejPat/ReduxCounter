@@ -1,0 +1,20 @@
+REDUX OVERVIEW
+A central store stores the entire applications state. A component wants to get and manipulate an applications state.
+A component does this by dispatching an action. An action is a pre-defined information package with a type 
+eg add ingredient, and can also have a payload eg what ingredient to add. The action reaches a reducer where the 
+reducer will check the type of action and will find the code in the reducer for that type of action. A reducer will
+receive a action and the old state and then will update the state. A reduce can only use synchronous code. The
+reducer then spits out the updated state which is stored in the central store. The store triggers a subscription
+whenever the state changes which then passes the updated state as props to the application.
+
+MIDDLEWARE
+Middleware can be added between the action being dispatched and reaching the reducer. Middleware allows us to do 
+something with the action before it reaches the reducer eg logging.
+
+ASYNC CODE:
+Synchronous action creators:
+Action creators is a function which returns an action. Instead of hard coding the object with type and payload when 
+doing a dispatch can use an action creator to return the object (in counter.js and result.js in actions folder).
+Redux thunk is a library which asss a middleware that allows your actions creators to not return the action itself
+but return a function which will eventually dispatch an action. Returning a function which will eventually dispatch
+an action helps run ascynchronous code as the eventually dispatched action is the part which can run ascynchronously.
